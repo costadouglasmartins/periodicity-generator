@@ -14,15 +14,12 @@ let periodicityGenerator = {
   addToDate: function (dateISO, years = 0, months = 0, days = 0) {
     const [year, month, day] = dateISO.split("-").map(Number);
     const date = new Date(year, month - 1, day);
-
     date.setFullYear(date.getFullYear() + years);
     date.setMonth(date.getMonth() + months);
     date.setDate(date.getDate() + days);
-
     const yyyy = date.getFullYear();
     const mm = String(date.getMonth() + 1).padStart(2, "0");
     const dd = String(date.getDate()).padStart(2, "0");
-
     return `${yyyy}-${mm}-${dd}`;
   },
   /**
@@ -37,28 +34,28 @@ let periodicityGenerator = {
   }
 };
 const form = document.getElementById("periodForm");
-form.addEventListener('submit', (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const startDate = document.getElementById('startDate').value;
-  const interval = document.getElementById('interval').value;
-  const selectedWeekdays = Array.from(document.querySelectorAll('input[name="weekdays"]:checked')).map(cb => cb.value);
+  const startDate = document.getElementById("startDate").value;
+  const interval = document.getElementById("interval").value;
+  const selectedWeekdays = Array.from(document.querySelectorAll("input[name='weekdays']:checked")).map(cb => cb.value);
   const duration = document.getElementById("duration").value;
 
-  if (!startDate || !interval || !selectedWeekdays || !duration) {
+  if (!startDate || !interval || !selectedWeekdays || !duration) 
+    {
     alert("Please, fill in all fields.");
     return;
-  }
+    }
 
   resultBox = document.getElementById("result");
-  resultBox.style.display = 'block';
+  resultBox.style.display = "block";
   resultBox.innerHTML = `
-        <strong>Data inicial:</strong> ${startDate}<br>
-        <strong>Intervalo:</strong> ${interval}<br>
-        <strong>Dias selecionados:</strong> ${selectedWeekdays.length > 0 ? selectedWeekdays.join(', ') : 'Nenhum'}
+        <strong>Start date:</strong> ${startDate}<br>
+        <strong>Interval:</strong> ${interval}<br>
+        <strong>Selected days:</strong> ${selectedWeekdays.length > 0 ? selectedWeekdays.join(", ") : 'None'}<br>
+        <strong>Duration:</strong> ${duration}<br>
       `;
-
-  // Também mostra no console (útil para debug)
   console.log({
     startDate,
     interval,
@@ -66,5 +63,3 @@ form.addEventListener('submit', (event) => {
     duration
   });
 });
-
-//let submitButton = document.getElementById("submitButton");

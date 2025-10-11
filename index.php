@@ -55,6 +55,23 @@
           <option value="">Select...</option>
           <option value="7">One week</option>
           <option value="14">Two weeks</option>
+          <option value="21">Three weeks</option>
+          <option value="30">1 month</option>
+          <option value="60">2 months</option>
+          <option value="90">3 months</option>
+          <option value="120">4 months</option>
+          <option value="150">5 months</option>
+          <option value="180">6 months</option>
+          <option value="210">7 months</option>
+          <option value="240">8 months</option>
+          <option value="270">9 months</option>
+          <option value="300">10 months</option>
+          <option value="330">11 months</option>
+          <option value="365">1 year</option>
+          <option value="730">2 years</option>
+          <option value="1095">3 years</option>
+          <option value="1460">4 years</option>
+          <option value="1825">5 years</option>
         </select>
       </div>
       <!-- /Duration -->
