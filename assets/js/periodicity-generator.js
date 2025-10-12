@@ -42,10 +42,10 @@ let periodicityGenerator = {
    * Generate a list of dates
    * @param {String} dateISO 
    * @param {String} interval 
-   * @param {Integer} weekdays 
+   * @param {Integer} selectedWeekdays 
    * @param {Integer} duration 
    */
-  generatePeridiocity: function (dateISO, interval, weekdays, duration) 
+  generatePeridiocity: function (dateISO, interval, selectedWeekdays, duration) 
     {
     switch (interval) 
       {
@@ -53,10 +53,13 @@ let periodicityGenerator = {
       case "DAILY":
         for (var i = 0; i < duration; i++)
           {
-          let newDate = this.addToDate(dateISO, 0, 0, i);
-          let weekday = this.getWeekday(newDate);
-
-          console.log(">>", newDate, weekday);  
+          let newISODate = this.addToDate(dateISO, 0, 0, i);
+          let weekday = this.getWeekday(newISODate);
+          //console.log(">>", selectedWeekdays, newISODate);
+          if (selectedWeekdays.includes(weekday.toString()))
+            {
+            console.log("x>>", newISODate, weekday);  
+            }
           }
       break;
       case "WEEKLY":  
@@ -91,15 +94,18 @@ form.addEventListener("submit", (event) => {
         <strong>Duration:</strong> ${duration}<br>
       `;
   periodicityGenerator.generatePeridiocity(startDate, interval, selectedWeekdays, duration);
+  /*
   console.log({
     startDate,
     interval,
     selectedWeekdays,
     duration
   });
+  */
 });
-
+/*
 let intervalField = document.getElementById("interval");
 intervalField.addEventListener("change", (event) => {
   console.log(event.target.value);
 });
+*/
