@@ -11,7 +11,7 @@
   
   <div class="form-container">
 
-    <form id="periodForm">
+    <form id="periodicityGeneratorForm">
       
       <!-- Start date -->
       <div>
@@ -32,21 +32,6 @@
         </select>
       </div>
       <!-- /Interval -->
-
-      <!-- Weekdays -->
-      <div>
-        <label>Weekdays:</label>
-        <div class="weekdays">
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="0">Sun</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="1">Mon</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="2">Tue</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="3">Wed</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="4">Thu</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="5">Fri</label>
-          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="6">Sat</label>
-        </div>
-      </div>
-      <!-- /Weekdays -->
 
       <!-- Duration -->
       <div>
@@ -75,6 +60,21 @@
         </select>
       </div>
       <!-- /Duration -->
+
+      <!-- Weekdays -->
+      <div>
+        <label>Weekdays:</label>
+        <div class="weekdays">
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="0">Sun</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="1">Mon</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="2">Tue</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="3">Wed</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="4">Thu</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="5">Fri</label>
+          <label class="weekday-item"><input autocomplete="off" type="checkbox" name="weekdays" value="6">Sat</label>
+        </div>
+      </div>
+      <!-- /Weekdays -->
 
       <!-- Action -->
       <button id="submitButton" type="submit">Generate</button>

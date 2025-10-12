@@ -11,7 +11,8 @@ let periodicityGenerator = {
    * @param {Integer} days 
    * @returns String
    */
-  addToDate: function (dateISO, years = 0, months = 0, days = 0) {
+  addToDate: function (dateISO, years = 0, months = 0, days = 0) 
+    {
     const [year, month, day] = dateISO.split("-").map(Number);
     const date = new Date(year, month - 1, day);
     date.setFullYear(date.getFullYear() + years);
@@ -21,7 +22,22 @@ let periodicityGenerator = {
     const mm = String(date.getMonth() + 1).padStart(2, "0");
     const dd = String(date.getDate()).padStart(2, "0");
     return `${yyyy}-${mm}-${dd}`;
-  },
+    },
+  /**
+   * Returns the description or its number of a weekday from a certain date
+   * @param {String} dateISO 
+   * @param {Boolean} returnName 
+   * @returns Mixed
+   */
+  getWeekday: function (dateISO, returnName = false) 
+    {
+    const [year, month, day] = dateISO.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+    const weekdayNumber = date.getDay(); // 0 = Sunday, 6 = Saturday
+    if (!returnName) return weekdayNumber;
+    const weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return weekdayNames[weekdayNumber];
+    },
   /**
    * Generate a list of dates
    * @param {String} dateISO 
@@ -29,11 +45,29 @@ let periodicityGenerator = {
    * @param {Integer} weekdays 
    * @param {Integer} duration 
    */
-  generatePeridiocity: function (dateISO, interval, weekdays, duration) {
-  // in progress...
-  }
+  generatePeridiocity: function (dateISO, interval, weekdays, duration) 
+    {
+    switch (interval) 
+      {
+      default:
+      case "DAILY":
+        for (var i = 0; i < duration; i++)
+          {
+          let newDate = this.addToDate(dateISO, 0, 0, i);
+          let weekday = this.getWeekday(newDate);
+
+          console.log(">>", newDate, weekday);  
+          }
+      break;
+      case "WEEKLY":  
+      break;
+      case "MONTHLY":
+      break;
+      }
+    }
+    
 };
-const form = document.getElementById("periodForm");
+const form = document.getElementById("periodicityGeneratorForm");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -56,10 +90,16 @@ form.addEventListener("submit", (event) => {
         <strong>Selected days:</strong> ${selectedWeekdays.length > 0 ? selectedWeekdays.join(", ") : 'None'}<br>
         <strong>Duration:</strong> ${duration}<br>
       `;
+  periodicityGenerator.generatePeridiocity(startDate, interval, selectedWeekdays, duration);
   console.log({
     startDate,
     interval,
     selectedWeekdays,
     duration
   });
+});
+
+let intervalField = document.getElementById("interval");
+intervalField.addEventListener("change", (event) => {
+  console.log(event.target.value);
 });
