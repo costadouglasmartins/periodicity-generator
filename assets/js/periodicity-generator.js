@@ -47,10 +47,13 @@ let periodicityGenerator = {
    */
   generatePeridiocity: function (dateISO, interval, selectedWeekdays, duration) 
     {
+    let resultBox = document.getElementById("result");
+    resultBox.style.display = "block";
     switch (interval) 
       {
       default:
       case "DAILY":
+        let stringDates = "";
         for (var i = 0; i < duration; i++)
           {
           let newISODate = this.addToDate(dateISO, 0, 0, i);
@@ -58,9 +61,10 @@ let periodicityGenerator = {
           //console.log(">>", selectedWeekdays, newISODate);
           if (selectedWeekdays.includes(weekday.toString()))
             {
-            console.log("x>>", newISODate, weekday);  
+            stringDates += newISODate + " - " + this.getWeekday(newISODate, true) + "<br>";  
             }
           }
+        resultBox.innerHTML = stringDates;
       break;
       case "WEEKLY":  
       break;
@@ -85,23 +89,7 @@ form.addEventListener("submit", (event) => {
     return;
     }
 
-  resultBox = document.getElementById("result");
-  resultBox.style.display = "block";
-  resultBox.innerHTML = `
-        <strong>Start date:</strong> ${startDate}<br>
-        <strong>Interval:</strong> ${interval}<br>
-        <strong>Selected days:</strong> ${selectedWeekdays.length > 0 ? selectedWeekdays.join(", ") : 'None'}<br>
-        <strong>Duration:</strong> ${duration}<br>
-      `;
   periodicityGenerator.generatePeridiocity(startDate, interval, selectedWeekdays, duration);
-  /*
-  console.log({
-    startDate,
-    interval,
-    selectedWeekdays,
-    duration
-  });
-  */
 });
 /*
 let intervalField = document.getElementById("interval");
