@@ -1,26 +1,37 @@
-# 🗓️ Gerador de Periodicidade
+# 🗓️ Gerador de Periodicidade / Periodicity Generator
 
-Este é um gerador de periodicidade desenvolvido em **JavaScript**, que permite criar uma sequência de datas com base em critérios personalizáveis como:
+Um gerador de periodicidade desenvolvido em **JavaScript**, onde é possível informar data inicial, intervalo, duração e dias da semana.
 
-- **Data inicial**
-- **Intervalo entre ocorrências**
-- **Duração total**
-- **Dias da semana específicos**
+A periodicity generator written in **JavaScript**, where you can set a start date, interval, duration, and specific weekdays.
 
-## 🚀 Funcionalidades
+---
 
-- Geração automática de datas a partir de uma configuração inicial
-- Filtros por dias da semana (ex: somente segundas e quartas)
-- Definição de intervalo em dias entre eventos
-- Duração em número total de ocorrências ou até uma data final
+## 📌 Funcionalidades / Features
 
-## 📦 Tecnologias utilizadas
+- Geração de datas recorrentes com base em uma configuração personalizada  
+- Filtro por dias da semana (ex: apenas segundas e quartas)  
+- Intervalo em dias entre cada ocorrência  
+- Definição de duração por número de repetições ou data final  
+
+---
+
+- Generate recurring dates based on customizable settings  
+- Filter by weekdays (e.g., only Mondays and Wednesdays)  
+- Interval in days between each occurrence  
+- Duration defined by number of repetitions or end date  
+
+---
+
+## 📦 Tecnologias utilizadas / Built With
 
 - JavaScript (ES6+)
-- Nenhuma dependência externa (puro JS)
+- Sem dependências externas / No external dependencies
 
-## ✅ Como usar
+---
 
-1. Clone este repositório:
+## ✅ Como usar / How to Use
+
+1. Clone o repositório e acesse o arquivo index.html:  
+   Clone the repository and access the file index.html:
    ```bash
    git clone https://github.com/costadouglasmartins/periodicity-generator
