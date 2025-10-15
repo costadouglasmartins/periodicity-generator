@@ -48,17 +48,19 @@ let periodicityGenerator = {
   generatePeridiocity: function (dateISO, interval, selectedWeekdays, duration) 
     {
     let resultBox = document.getElementById("result");
+    let stringDates = "";
+    let newISODate = "";
+    let weekday = null;
     resultBox.style.display = "block";
     switch (interval) 
       {
       default:
       case "DAILY":
-        let stringDates = "";
+      case "WEEKLY":  
         for (var i = 0; i < duration; i++)
           {
-          let newISODate = this.addToDate(dateISO, 0, 0, i);
-          let weekday = this.getWeekday(newISODate);
-          //console.log(">>", selectedWeekdays, newISODate);
+          newISODate = this.addToDate(dateISO, 0, 0, i);
+          weekday = this.getWeekday(newISODate);
           if (selectedWeekdays.includes(weekday.toString()))
             {
             stringDates += newISODate + " - " + this.getWeekday(newISODate, true) + "<br>";  
@@ -66,10 +68,26 @@ let periodicityGenerator = {
           }
         resultBox.innerHTML = stringDates;
       break;
-      case "WEEKLY":  
-      break;
       case "MONTHLY":
-      break;
+        for (var i = 0; i < duration / 30; i++)
+          {
+          newISODate = this.addToDate(dateISO, 0, i, 0);
+          weekday = this.getWeekday(newISODate);
+          if (selectedWeekdays.includes(weekday.toString()))
+            {
+            stringDates += newISODate + " - " + this.getWeekday(newISODate, true) + "<br>"; 
+            }
+          }
+        resultBox.innerHTML = stringDates;
+        break;
+      case "ANUALY":
+        for (var i = 0; i < duration / 365; i++)
+          { 
+          newISODate = this.addToDate(dateISO, i, 0, 0);  
+          stringDates += newISODate + " - " + this.getWeekday(newISODate, true) + "<br>";
+          }
+        resultBox.innerHTML = stringDates;
+        break;
       }
     }
     
